@@ -1,7 +1,13 @@
+import 'package:beauty_call/screens/customer/customer_dashboard_screen.dart';
+import 'package:beauty_call/screens/vender/auth_screen.dart';
+import 'package:beauty_call/utils/vender_theme/colorResources.dart';
+import 'package:beauty_call/utils/vender_theme/dimensions.dart';
+import 'package:beauty_call/utils/vender_theme/strings.dart';
+import 'package:beauty_call/utils/vender_theme/style.dart';
 import 'package:beauty_call/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
-class AuthScreen extends StatelessWidget {
+class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,28 +24,25 @@ class AuthScreen extends StatelessWidget {
                 height: 110,
                 width: 100,
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 60,
-                  bottom: 25,
-                ),
-                child: Text(
-                  'Create a free account',
-                ),
-              ),
               Container(
                 margin: EdgeInsets.all(15),
                 child: CustomButton(
-                  btnTxt: 'Create an Account',
-                  onTap: () {},
+                  btnTxt: 'Continue as Vender',
+                  isWhiteBackground: true,
+                  onTap: () {
+                    Navigator.of(context).pushNamed(AuthScreen.routeName);
+                  },
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(left: 15, right: 15),
                 child: CustomButton(
-                  btnTxt: 'Sign IN',
+                  btnTxt: 'Continue as Customer',
                   isWhiteBackground: true,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context)
+                        .pushNamed(CustomerDashboardScreen.routeName);
+                  },
                 ),
               ),
             ],

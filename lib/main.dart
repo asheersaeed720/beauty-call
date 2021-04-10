@@ -1,5 +1,6 @@
-import 'package:beauty_call/screens/auth_screen.dart';
+import 'package:beauty_call/screens/main_screen.dart';
 import 'package:beauty_call/utils/app_theme.dart';
+import 'package:beauty_call/utils/custom_routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -35,26 +36,8 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         textTheme: AppTheme.textTheme,
       ),
-      home: AuthScreen(),
-    );
-  }
-}
-
-class DemoScreen extends StatefulWidget {
-  @override
-  _DemoScreenState createState() => _DemoScreenState();
-}
-
-class _DemoScreenState extends State<DemoScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Demo'),
-      ),
-      body: Center(
-        child: Text('This is Demo Screen!'),
-      ),
+      home: MainScreen(),
+      routes: customRoutes,
     );
   }
 }

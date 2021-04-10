@@ -1,4 +1,5 @@
-import 'package:beauty_call/utils/app_theme.dart';
+import 'package:beauty_call/utils/vender_theme/colorResources.dart';
+import 'package:beauty_call/utils/vender_theme/style.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -20,20 +21,21 @@ class CustomButton extends StatelessWidget {
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 1,
               blurRadius: 7,
-              offset: Offset(0, 1),
+              offset: Offset(0, 1), // changes position of shadow
             ),
           ],
-          color:
-              isWhiteBackground ? AppTheme.COLOR_WHITE : AppTheme.COLOR_PRIMARY,
+          color: isWhiteBackground
+              ? ColorResources.COLOR_WHITE
+              : ColorResources.COLOR_PRIMARY,
           borderRadius: BorderRadius.circular(10)),
       child: FlatButton(
         onPressed: onTap,
         padding: EdgeInsets.all(0),
         child: Text(btnTxt,
-            style: AppTheme.poppinsSemiBold.copyWith(
+            style: khulaSemiBold.copyWith(
                 color: isWhiteBackground
-                    ? AppTheme.COLOR_PRIMARY
-                    : AppTheme.COLOR_WHITE)),
+                    ? ColorResources.COLOR_PRIMARY
+                    : ColorResources.COLOR_WHITE)),
       ),
     );
   }
