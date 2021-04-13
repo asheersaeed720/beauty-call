@@ -25,6 +25,7 @@ class AppTheme {
   static const Color COLOR_MAYA_BLUE = Color(0xff3ECDFF);
   static const Color COLOR_COLUMBIA_BLUE = Color(0xffB1D8FA);
   static const Color COLOR_SKY_MAYA_BLUE = Color(0xffD6ECFF);
+
   static const String fontName = 'Poppins';
 
   static const TextTheme textTheme = TextTheme(

@@ -1,4 +1,4 @@
-import 'package:beauty_call/screens/main_screen.dart';
+import 'package:beauty_call/screens/main_screens/main_screen.dart';
 import 'package:beauty_call/utils/app_theme.dart';
 import 'package:beauty_call/utils/custom_routes.dart';
 import 'package:flutter/material.dart';

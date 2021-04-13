@@ -1,5 +1,5 @@
-import 'package:beauty_call/utils/vender_theme/colorResources.dart';
-import 'package:beauty_call/utils/vender_theme/dimensions.dart';
+import 'package:beauty_call/utils/app_theme.dart';
+
 import 'package:beauty_call/utils/vender_theme/style.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +39,7 @@ class _CustomPassFieldState extends State<CustomPassField> {
         overflow: Overflow.visible,
         children: [
           TextFormField(
-            cursorColor: ColorResources.COLOR_PRIMARY,
+            cursorColor: AppTheme.COLOR_PRIMARY,
             controller: widget.controller,
             obscureText: _obscureText,
             focusNode: widget.focusNode,
@@ -58,7 +58,7 @@ class _CustomPassFieldState extends State<CustomPassField> {
               suffixIcon: IconButton(
                 icon: Icon(
                   _obscureText ? Icons.visibility_off : Icons.visibility,
-                  color: ColorResources.COLOR_GREY,
+                  color: AppTheme.COLOR_GREY,
                 ),
                 onPressed: _toggle,
               ),
@@ -67,8 +67,9 @@ class _CustomPassFieldState extends State<CustomPassField> {
                   EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
               isDense: true,
               hintStyle: khulaRegular.copyWith(
-                  color: ColorResources.COLOR_GREY,
-                  fontSize: Dimensions.FONT_SIZE_SMALL),
+                color: AppTheme.COLOR_GREY,
+                fontSize: 12.0,
+              ),
               border: InputBorder.none,
             ),
           ),
@@ -78,7 +79,7 @@ class _CustomPassFieldState extends State<CustomPassField> {
             right: 0,
             child: Container(
               height: 1,
-              color: ColorResources.COLOR_GAINSBORO,
+              color: AppTheme.COLOR_GAINSBORO,
             ),
           ),
         ],

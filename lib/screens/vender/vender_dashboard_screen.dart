@@ -1,23 +1,83 @@
 import 'package:beauty_call/models/doctor_data.dart';
 import 'package:beauty_call/models/specialist_data.dart';
 import 'package:beauty_call/screens/vender/my_appointments.dart';
-import 'package:beauty_call/utils/vender_theme/colorResources.dart';
-import 'package:beauty_call/utils/vender_theme/dimensions.dart';
-import 'package:beauty_call/utils/vender_theme/strings.dart';
+import 'package:beauty_call/utils/app_theme.dart';
+
 import 'package:beauty_call/utils/vender_theme/style.dart';
 import 'package:beauty_call/widgets/home_specialist_cardwidget.dart';
 import 'package:beauty_call/widgets/home_specialist_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-class DoctorHomeScreen extends StatefulWidget {
+class VenderDashboardScreen extends StatefulWidget {
   static const String routeName = '/dashboard';
 
   @override
-  _DoctorHomeScreenState createState() => _DoctorHomeScreenState();
+  _VenderDashboardScreenState createState() => _VenderDashboardScreenState();
 }
 
-class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
+class _VenderDashboardScreenState extends State<VenderDashboardScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppTheme.COLOR_HOME_BACKGROUND,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _homeToolbar(context),
+              SizedBox(height: 20),
+              GestureDetector(onTap: () {}, child: _searchDoctors(context)),
+              SizedBox(height: 20),
+              Container(
+                  margin: EdgeInsets.only(left: 15.0),
+                  child: Text(
+                    'Specialist',
+                    style: khulaSemiBold.copyWith(
+                      color: AppTheme.COLOR_GREY,
+                      fontSize: 16.0,
+                    ),
+                    textAlign: TextAlign.start,
+                  )),
+              _specialistList(context),
+              SizedBox(
+                height: 20,
+              ),
+              // _specialistBannerList(context),
+              // SizedBox(
+              //   height: 20,
+              // ),
+              Container(
+                  padding: EdgeInsets.only(left: 16, right: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Top Doctors',
+                          style: khulaSemiBold.copyWith(
+                            color: AppTheme.COLOR_GREY,
+                            fontSize: 16.0,
+                          )),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text('View All',
+                            style: khulaSemiBold.copyWith(
+                              color: AppTheme.COLOR_GREY,
+                              fontSize: 12.0,
+                            )),
+                      ),
+                    ],
+                  )),
+              _showAllDoctor(context),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _homeToolbar(BuildContext context) {
     return Container(
       padding: EdgeInsets.fromLTRB(15, 15, 15, 0),
@@ -28,10 +88,10 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
             height: 35,
             margin: EdgeInsets.only(right: 10),
             child: CircleAvatar(
-              backgroundColor: ColorResources.COLOR_GAINSBORO,
+              backgroundColor: AppTheme.COLOR_GAINSBORO,
               child: Icon(
                 Icons.person,
-                color: ColorResources.COLOR_WHITE,
+                color: AppTheme.COLOR_WHITE,
               ),
             ),
           ),
@@ -41,15 +101,16 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  Strings.JOHN_DOE,
+                  'John Doe',
                   style: khulaRegular.copyWith(
-                      color: ColorResources.COLOR_GREY, fontSize: 20),
+                      color: AppTheme.COLOR_GREY, fontSize: 20),
                 ),
                 Text(
-                  Strings.FIND_BEST_DOCTORS_EASILY,
+                  'Find best doctors easily',
                   style: khulaRegular.copyWith(
-                      color: ColorResources.COLOR_GREY,
-                      fontSize: Dimensions.FONT_SIZE_SMALL),
+                    color: AppTheme.COLOR_GREY,
+                    fontSize: 12.0,
+                  ),
                 ),
               ],
             ),
@@ -61,7 +122,7 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
                 height: 35,
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: ColorResources.COLOR_WHITE,
+                  color: AppTheme.COLOR_WHITE,
                   borderRadius: BorderRadius.all(Radius.circular(8)),
                   boxShadow: [
                     BoxShadow(
@@ -74,7 +135,7 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
                 ),
                 child: Image.asset(
                   'assets/doctor/Icon/calendar3.png',
-                  color: ColorResources.COLOR_PRIMARY,
+                  color: AppTheme.COLOR_PRIMARY,
                   fit: BoxFit.scaleDown,
                 )),
           ),
@@ -90,7 +151,7 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
       margin: EdgeInsets.only(right: 20, left: 20),
       padding: EdgeInsets.only(left: 20, right: 5),
       decoration: BoxDecoration(
-        color: ColorResources.COLOR_WHITE,
+        color: AppTheme.COLOR_WHITE,
         borderRadius: BorderRadius.all(Radius.circular(8)),
         boxShadow: [
           BoxShadow(
@@ -106,21 +167,22 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
           Positioned(
             top: 12,
             child: Text(
-              Strings.SEARCH_HINT,
+              'Search Doctors',
               style: khulaSemiBold.copyWith(
-                color: ColorResources.COLOR_GAINSBORO,
+                color: AppTheme.COLOR_GAINSBORO,
               ),
             ),
           ),
           Positioned(
-              right: 10,
-              top: 10,
-              child: Image.asset(
-                'assets/doctor/Icon/Search.png',
-                color: ColorResources.COLOR_PRIMARY,
-                width: 25,
-                height: 25,
-              )),
+            right: 10,
+            top: 10,
+            child: Image.asset(
+              'assets/doctor/Icon/Search.png',
+              color: AppTheme.COLOR_PRIMARY,
+              width: 25,
+              height: 25,
+            ),
+          ),
         ],
       ),
     );
@@ -130,7 +192,7 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
     return Container(
       height: 120,
       margin: EdgeInsets.only(left: 16),
-      decoration: BoxDecoration(color: ColorResources.COLOR_HOME_BACKGROUND),
+      decoration: BoxDecoration(color: AppTheme.COLOR_HOME_BACKGROUND),
       child: ListView.builder(
           itemCount: SpecialistData.speciaList.length,
           scrollDirection: Axis.horizontal,
@@ -167,7 +229,7 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
         crossAxisCount: 3,
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
-        itemCount: DoctorData.topDoctorList.length,
+        itemCount: DoctorData.allDoctorList.length,
         itemBuilder: (BuildContext context, int index) => GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed(MyAppointments.routeName);
@@ -178,7 +240,7 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
               horizontal: 5,
             ),
             decoration: BoxDecoration(
-              color: ColorResources.COLOR_WHITE,
+              color: AppTheme.COLOR_WHITE,
               borderRadius: BorderRadius.all(Radius.circular(10)),
               boxShadow: [
                 BoxShadow(
@@ -197,7 +259,7 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.asset(
-                      DoctorData.topDoctorList[index].imageUrl,
+                      DoctorData.allDoctorList[index].imageUrl,
                       height: double.maxFinite,
                       width: double.maxFinite,
                       fit: BoxFit.cover,
@@ -210,26 +272,26 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    DoctorData.topDoctorList[index].name,
+                    DoctorData.allDoctorList[index].name,
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: khulaSemiBold.copyWith(
-                      fontSize: Dimensions.FONT_SIZE_DEFAULT,
-                      color: ColorResources.COLOR_MAYA_BLUE,
+                      fontSize: 14.0,
+                      color: AppTheme.COLOR_MAYA_BLUE,
                     ),
                   ),
                 ),
                 Expanded(
                   flex: 5,
                   child: Text(
-                    DoctorData.topDoctorList[index].designation,
+                    DoctorData.allDoctorList[index].designation,
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: khulaRegular.copyWith(
-                      fontSize: Dimensions.FONT_SIZE_EXTRA_SMALL,
-                      color: ColorResources.COLOR_GREY,
+                      fontSize: 10.0,
+                      color: AppTheme.COLOR_GREY,
                     ),
                   ),
                 ),
@@ -240,66 +302,6 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
         staggeredTileBuilder: (int index) => new StaggeredTile.count(1, 1.3),
         mainAxisSpacing: 12.0,
         crossAxisSpacing: 1.0,
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorResources.COLOR_HOME_BACKGROUND,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _homeToolbar(context),
-              SizedBox(height: 20),
-              GestureDetector(onTap: () {}, child: _searchDoctors(context)),
-              SizedBox(height: 20),
-              Container(
-                  margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT),
-                  child: Text(
-                    Strings.SPECIALIST,
-                    style: khulaSemiBold.copyWith(
-                        color: ColorResources.COLOR_GREY,
-                        fontSize: Dimensions.FONT_SIZE_LARGE),
-                    textAlign: TextAlign.start,
-                  )),
-              _specialistList(context),
-              SizedBox(
-                height: 20,
-              ),
-              _specialistBannerList(context),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                  padding: EdgeInsets.only(left: 16, right: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(Strings.TOP_DOCTORS,
-                          style: khulaSemiBold.copyWith(
-                            color: ColorResources.COLOR_GREY,
-                            fontSize: Dimensions.FONT_SIZE_LARGE,
-                          )),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Text(Strings.VIEW_ALL,
-                            style: khulaSemiBold.copyWith(
-                              color: ColorResources.COLOR_GREY,
-                              fontSize: Dimensions.FONT_SIZE_SMALL,
-                            )),
-                      ),
-                    ],
-                  )),
-              _showAllDoctor(context),
-            ],
-          ),
-        ),
       ),
     );
   }

@@ -1,24 +1,24 @@
 import 'package:beauty_call/models/specialist.dart';
-import 'package:beauty_call/utils/vender_theme/colorResources.dart';
+import 'package:beauty_call/utils/app_theme.dart';
 
 class SpecialistData {
   static List<SpeciaList> speciaList = [
     SpeciaList(
-        iconUrl: 'assets/doctor/Icon/cardiac.png',
-        title: 'Cardio\nspecialist',
-        backgroundColor: ColorResources.COLOR_PRIMARY),
+        iconUrl: 'assets/doctor/Icon/barber.png',
+        title: 'Friseur',
+        backgroundColor: AppTheme.COLOR_PRIMARY),
     SpeciaList(
         iconUrl: 'assets/doctor/Icon/heart.png',
-        title: 'Heart\nspecialist',
-        backgroundColor: ColorResources.COLOR_YELLOW_SEA),
+        title: 'Gesicht',
+        backgroundColor: AppTheme.COLOR_YELLOW_SEA),
     SpeciaList(
         iconUrl: 'assets/doctor/Icon/dental.png',
-        title: 'Dental\nspecialist',
-        backgroundColor: ColorResources.COLOR_MOUNTAIN_MEADOW),
+        title: 'Massage',
+        backgroundColor: AppTheme.COLOR_MOUNTAIN_MEADOW),
     SpeciaList(
         iconUrl: 'assets/doctor/Icon/dental.png',
-        title: 'Mental\nspecialist',
-        backgroundColor: ColorResources.COLOR_MEDIUM_SLATE_BLUE),
+        title: 'Manicure',
+        backgroundColor: AppTheme.COLOR_MEDIUM_SLATE_BLUE),
   ];
 
   static List<SpeciaList> getBannerList = [

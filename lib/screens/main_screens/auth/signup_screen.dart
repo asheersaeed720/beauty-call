@@ -1,7 +1,6 @@
-import 'package:beauty_call/screens/vender/doctor_home_screen.dart';
-import 'package:beauty_call/utils/vender_theme/colorResources.dart';
-import 'package:beauty_call/utils/vender_theme/dimensions.dart';
-import 'package:beauty_call/utils/vender_theme/strings.dart';
+import 'package:beauty_call/screens/vender/vender_dashboard_screen.dart';
+import 'package:beauty_call/utils/app_theme.dart';
+
 import 'package:beauty_call/utils/vender_theme/style.dart';
 import 'package:beauty_call/widgets/custom_button.dart';
 import 'package:beauty_call/widgets/custom_pass_field.dart';
@@ -12,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 
-class DoctorSignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatelessWidget {
   static const String routeName = '/sign-up';
 
   @override
@@ -45,20 +44,20 @@ class DoctorSignUpScreen extends StatelessWidget {
               // for email
               Container(
                 margin: EdgeInsets.only(
-                    left: Dimensions.MARGIN_SIZE_DEFAULT,
-                    right: Dimensions.MARGIN_SIZE_DEFAULT,
-                    bottom: Dimensions.MARGIN_SIZE_DEFAULT),
+                  left: 15.0,
+                  right: 15.0,
+                  bottom: 15.0,
+                ),
                 child: Stack(
                   children: [
                     TextFieldTitleWidget(
                       imageUrl: 'assets/doctor/Icon/email.png',
-                      title: Strings.EMAIL,
+                      title: 'Email',
                     ),
                     Container(
-                      margin:
-                          EdgeInsets.only(top: Dimensions.MARGIN_SIZE_LARGE),
+                      margin: EdgeInsets.only(top: 20.0),
                       child: CustomTextField(
-                        hintTxt: Strings.NIPON_MAIL,
+                        hintTxt: 'johndoe@email.com',
                         textInputType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
                         focusNode: _emailNode,
@@ -74,20 +73,20 @@ class DoctorSignUpScreen extends StatelessWidget {
               // for Name
               Container(
                 margin: EdgeInsets.only(
-                    left: Dimensions.MARGIN_SIZE_DEFAULT,
-                    right: Dimensions.MARGIN_SIZE_DEFAULT,
-                    bottom: Dimensions.MARGIN_SIZE_DEFAULT),
+                  left: 15.0,
+                  right: 15.0,
+                  bottom: 15.0,
+                ),
                 child: Stack(
                   children: [
                     TextFieldTitleWidget(
                       imageUrl: 'assets/doctor/Icon/people.png',
-                      title: Strings.NAME,
+                      title: 'Name',
                     ),
                     Container(
-                      margin:
-                          EdgeInsets.only(top: Dimensions.MARGIN_SIZE_LARGE),
+                      margin: EdgeInsets.only(top: 20.0),
                       child: CustomTextField(
-                        hintTxt: Strings.ENTER_YOUR_NAME,
+                        hintTxt: 'Enter your name',
                         textInputType: TextInputType.text,
                         textInputAction: TextInputAction.next,
                         focusNode: _nameNode,
@@ -102,18 +101,18 @@ class DoctorSignUpScreen extends StatelessWidget {
               // for phone number
               Container(
                 margin: EdgeInsets.only(
-                    left: Dimensions.MARGIN_SIZE_DEFAULT,
-                    right: Dimensions.MARGIN_SIZE_DEFAULT,
-                    bottom: Dimensions.MARGIN_SIZE_DEFAULT),
+                  left: 15.0,
+                  right: 15.0,
+                  bottom: 15.0,
+                ),
                 child: Stack(
                   children: [
                     TextFieldTitleWidget(
                       imageUrl: 'assets/doctor/Icon/phone 2.png',
-                      title: Strings.PHONE,
+                      title: 'Phone',
                     ),
                     Container(
-                      margin:
-                          EdgeInsets.only(top: Dimensions.MARGIN_SIZE_LARGE),
+                      margin: EdgeInsets.only(top: 20.0),
                       child: Row(
                         children: [
                           Expanded(
@@ -132,7 +131,7 @@ class DoctorSignUpScreen extends StatelessWidget {
                           Expanded(
                               flex: 3,
                               child: CustomTextField(
-                                hintTxt: Strings.ENTER_YOUR_PHONE_NO,
+                                hintTxt: 'Enter your phone no.',
                                 textInputType: TextInputType.number,
                                 textInputAction: TextInputAction.next,
                                 focusNode: _phoneNode,
@@ -149,7 +148,7 @@ class DoctorSignUpScreen extends StatelessWidget {
                       right: 0,
                       child: Container(
                         height: 1,
-                        color: ColorResources.COLOR_GAINSBORO,
+                        color: AppTheme.COLOR_GAINSBORO,
                       ),
                     ),
                   ],
@@ -159,20 +158,20 @@ class DoctorSignUpScreen extends StatelessWidget {
               // for password
               Container(
                 margin: EdgeInsets.only(
-                    left: Dimensions.MARGIN_SIZE_DEFAULT,
-                    right: Dimensions.MARGIN_SIZE_DEFAULT,
-                    bottom: Dimensions.MARGIN_SIZE_DEFAULT),
+                  left: 15.0,
+                  right: 15.0,
+                  bottom: 15.0,
+                ),
                 child: Stack(
                   children: [
                     TextFieldTitleWidget(
                       imageUrl: 'assets/doctor/Icon/security.png',
-                      title: Strings.PASSWORD,
+                      title: 'Password',
                     ),
                     Container(
-                      margin:
-                          EdgeInsets.only(top: Dimensions.MARGIN_SIZE_LARGE),
+                      margin: EdgeInsets.only(top: 15.0),
                       child: CustomPassField(
-                        hintTxt: Strings.ENTER_YOUR_PASSWORD,
+                        hintTxt: 'Enter your password',
                         textInputAction: TextInputAction.done,
                         focusNode: _passNode,
                         controller: _passwordController,
@@ -188,14 +187,15 @@ class DoctorSignUpScreen extends StatelessWidget {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  left: Dimensions.MARGIN_SIZE_DEFAULT,
-                  right: Dimensions.MARGIN_SIZE_DEFAULT,
+                  left: 15.0,
+                  right: 15.0,
                 ),
                 child: CustomButton(
-                  btnTxt: Strings.SIGN_UP,
+                  btnTxt: 'Sign Up',
                   onTap: () {
                     // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => ProfileEditScreen(fromSetting: false)));
-                    Navigator.of(context).pushNamed(DoctorHomeScreen.routeName);
+                    Navigator.of(context)
+                        .pushNamed(VenderDashboardScreen.routeName);
                   },
                 ),
               ),
@@ -211,16 +211,16 @@ class DoctorSignUpScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      Strings.ALREADY_HAVE_AN_ACCOUNT,
+                      'Already have an account?',
                       style: khulaSemiBold.copyWith(
-                          color: ColorResources.COLOR_GREY,
-                          fontSize: Dimensions.FONT_SIZE_SMALL),
+                        color: AppTheme.COLOR_GREY,
+                        fontSize: 12.0,
+                      ),
                     ),
                     Text(
-                      Strings.SIGN_IN,
+                      'Sign In',
                       style: khulaSemiBold.copyWith(
-                          color: ColorResources.COLOR_PRIMARY,
-                          fontSize: Dimensions.FONT_SIZE_SMALL),
+                          color: AppTheme.COLOR_PRIMARY, fontSize: 15.0),
                     ),
                   ],
                 ),
@@ -229,21 +229,21 @@ class DoctorSignUpScreen extends StatelessWidget {
                 height: 25,
               ),
               Container(
-                margin: EdgeInsets.all(Dimensions.MARGIN_SIZE_DEFAULT),
+                margin: EdgeInsets.all(15.0),
                 child: Row(
                   children: [
                     Text(
-                      Strings.OR_SIGN_IN,
+                      'Or sign in with',
                       style: khulaRegular.copyWith(
-                        color: ColorResources.COLOR_GREY,
-                        fontSize: Dimensions.FONT_SIZE_SMALL,
+                        color: AppTheme.COLOR_GREY,
+                        fontSize: 12.0,
                       ),
                     ),
                     Expanded(
                       child: Container(
                         height: 1,
                         width: 10,
-                        color: ColorResources.COLOR_GAINSBORO,
+                        color: AppTheme.COLOR_GAINSBORO,
                       ),
                     ),
                   ],
@@ -252,7 +252,7 @@ class DoctorSignUpScreen extends StatelessWidget {
 
               // for or sign in
               Container(
-                margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT),
+                margin: const EdgeInsets.only(left: 15.0),
                 child: Row(
                   children: [
                     SocialMediaWidget(

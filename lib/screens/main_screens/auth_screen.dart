@@ -1,8 +1,7 @@
-import 'package:beauty_call/screens/vender/doctor_signin_screen.dart';
-import 'package:beauty_call/screens/vender/doctor_signup_screen.dart';
-import 'package:beauty_call/utils/vender_theme/colorResources.dart';
-import 'package:beauty_call/utils/vender_theme/dimensions.dart';
-import 'package:beauty_call/utils/vender_theme/strings.dart';
+import 'package:beauty_call/screens/main_screens/auth/login_screen.dart';
+import 'package:beauty_call/screens/main_screens/auth/signup_screen.dart';
+import 'package:beauty_call/utils/app_theme.dart';
+
 import 'package:beauty_call/utils/vender_theme/style.dart';
 import 'package:beauty_call/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -28,43 +27,41 @@ class AuthScreen extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  top: 60,
-                  bottom: Dimensions.PADDING_SIZE_EXTRA_LARGE,
+                  top: 60.0,
+                  bottom: 25.0,
                 ),
                 child: Text(
-                  Strings.CREATE_A_FREE_ACCOUNT,
+                  'Create a free account',
                   style: khulaSemiBold.copyWith(
-                    color: ColorResources.COLOR_GREY,
-                    fontSize: Dimensions.FONT_SIZE_LARGE,
+                    color: AppTheme.COLOR_GREY,
+                    fontSize: 16.0,
                   ),
                 ),
               ),
               Container(
                 margin: EdgeInsets.all(15),
                 child: CustomButton(
-                  btnTxt: Strings.CREATE_AN_ACCOUNT,
+                  btnTxt: 'Create an Account',
                   onTap: () {
                     // Navigator.pushReplacement(
                     //     context,
                     //     MaterialPageRoute(
                     //         builder: (_) => DoctorSignUpScreen()));
-                    Navigator.of(context)
-                        .pushNamed(DoctorSignUpScreen.routeName);
+                    Navigator.of(context).pushNamed(SignUpScreen.routeName);
                   },
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(left: 15, right: 15),
                 child: CustomButton(
-                  btnTxt: Strings.SIGN_IN,
+                  btnTxt: 'Login',
                   isWhiteBackground: true,
                   onTap: () {
                     // Navigator.pushReplacement(
                     //     context,
                     //     MaterialPageRoute(
                     //         builder: (_) => DoctorSignInScreen()));
-                    Navigator.of(context)
-                        .pushNamed(DoctorSignInScreen.routeName);
+                    Navigator.of(context).pushNamed(LoginScreen.routeName);
                   },
                 ),
               ),

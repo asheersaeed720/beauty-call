@@ -1,6 +1,5 @@
-import 'package:beauty_call/utils/vender_theme/colorResources.dart';
-import 'package:beauty_call/utils/vender_theme/dimensions.dart';
-import 'package:beauty_call/utils/vender_theme/strings.dart';
+import 'package:beauty_call/utils/app_theme.dart';
+
 import 'package:beauty_call/utils/vender_theme/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -60,7 +59,7 @@ class CustomTextField extends StatelessWidget {
             validator: (input) => isEmail
                 ? input.isValidEmail()
                     ? null
-                    : Strings.PLEASE_PROVIDE_A_VALID_EMAIL
+                    : 'Please Provide a Valid Email'
                 : null,
             decoration: InputDecoration(
               hintText: hintTxt ?? '',
@@ -68,8 +67,7 @@ class CustomTextField extends StatelessWidget {
                   EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
               isDense: true,
               hintStyle: khulaRegular.copyWith(
-                  color: ColorResources.COLOR_GREY,
-                  fontSize: Dimensions.FONT_SIZE_SMALL),
+                  color: AppTheme.COLOR_GREY, fontSize: 12.0),
               errorStyle: TextStyle(height: 1.5),
               border: InputBorder.none,
               enabledBorder: InputBorder.none,
@@ -81,7 +79,7 @@ class CustomTextField extends StatelessWidget {
             right: 0,
             child: Container(
               height: 1,
-              color: ColorResources.COLOR_GAINSBORO,
+              color: AppTheme.COLOR_GAINSBORO,
             ),
           ),
         ],

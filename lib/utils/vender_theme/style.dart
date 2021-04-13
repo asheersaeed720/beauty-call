@@ -1,21 +1,21 @@
-import 'package:beauty_call/utils/vender_theme/colorResources.dart';
-import 'package:beauty_call/utils/vender_theme/dimensions.dart';
+import 'package:beauty_call/utils/app_theme.dart';
+
 import 'package:flutter/material.dart';
 
 const khulaRegular = TextStyle(
-  color: ColorResources.COLOR_BLACK,
+  color: AppTheme.COLOR_BLACK,
   fontFamily: 'Poppins',
-  fontSize: Dimensions.FONT_SIZE_DEFAULT,
+  fontSize: 14.0,
 );
 const khulaBold = TextStyle(
-  color: ColorResources.COLOR_BLACK,
+  color: AppTheme.COLOR_BLACK,
   fontFamily: 'Poppins',
   fontWeight: FontWeight.bold,
-  fontSize: Dimensions.FONT_SIZE_DEFAULT,
+  fontSize: 14.0,
 );
 const khulaSemiBold = TextStyle(
-  color: ColorResources.COLOR_BLACK,
+  color: AppTheme.COLOR_BLACK,
   fontFamily: 'Poppins',
   fontWeight: FontWeight.w600,
-  fontSize: Dimensions.FONT_SIZE_DEFAULT,
+  fontSize: 14.0,
 );

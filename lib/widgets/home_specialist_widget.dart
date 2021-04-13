@@ -1,6 +1,6 @@
 import 'package:beauty_call/models/specialist.dart';
-import 'package:beauty_call/utils/vender_theme/colorResources.dart';
-import 'package:beauty_call/utils/vender_theme/dimensions.dart';
+import 'package:beauty_call/utils/app_theme.dart';
+
 import 'package:beauty_call/utils/vender_theme/style.dart';
 import 'package:flutter/material.dart';
 
@@ -44,8 +44,9 @@ class HomeSpecialistWidget extends StatelessWidget {
             Text(speciaList.title,
                 textAlign: TextAlign.center,
                 style: khulaSemiBold.copyWith(
-                    color: ColorResources.COLOR_WHITE,
-                    fontSize: Dimensions.FONT_SIZE_SMALL))
+                  color: AppTheme.COLOR_WHITE,
+                  fontSize: 12.0,
+                ))
           ],
         ),
       ),

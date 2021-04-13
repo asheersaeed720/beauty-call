@@ -1,4 +1,5 @@
-import 'package:beauty_call/utils/vender_theme/colorResources.dart';
+import 'package:beauty_call/utils/app_theme.dart';
+
 import 'package:beauty_call/utils/vender_theme/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class TextFieldTitleWidget extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: khulaSemiBold.copyWith(
-              color: ColorResources.COLOR_GREY,
+              color: AppTheme.COLOR_GREY,
             ),
           ),
         ),

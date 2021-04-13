@@ -1,8 +1,6 @@
 import 'package:beauty_call/screens/customer/customer_dashboard_screen.dart';
-import 'package:beauty_call/screens/vender/auth_screen.dart';
-import 'package:beauty_call/utils/vender_theme/colorResources.dart';
-import 'package:beauty_call/utils/vender_theme/dimensions.dart';
-import 'package:beauty_call/utils/vender_theme/strings.dart';
+import 'package:beauty_call/screens/main_screens/auth_screen.dart';
+
 import 'package:beauty_call/utils/vender_theme/style.dart';
 import 'package:beauty_call/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +25,7 @@ class MainScreen extends StatelessWidget {
               Container(
                 margin: EdgeInsets.all(15),
                 child: CustomButton(
-                  btnTxt: 'Continue as Vender',
+                  btnTxt: 'Login as Vender',
                   isWhiteBackground: true,
                   onTap: () {
                     Navigator.of(context).pushNamed(AuthScreen.routeName);
@@ -37,11 +35,12 @@ class MainScreen extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(left: 15, right: 15),
                 child: CustomButton(
-                  btnTxt: 'Continue as Customer',
+                  btnTxt: 'Login as Customer',
                   isWhiteBackground: true,
                   onTap: () {
-                    Navigator.of(context)
-                        .pushNamed(CustomerDashboardScreen.routeName);
+                    Navigator.of(context).pushNamed(AuthScreen.routeName);
+                    // Navigator.of(context)
+                    //     .pushNamed(CustomerDashboardScreen.routeName);
                   },
                 ),
               ),

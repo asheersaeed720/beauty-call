@@ -1,7 +1,6 @@
 import 'package:beauty_call/models/appointment_model.dart';
-import 'package:beauty_call/utils/vender_theme/colorResources.dart';
-import 'package:beauty_call/utils/vender_theme/dimensions.dart';
-import 'package:beauty_call/utils/vender_theme/strings.dart';
+import 'package:beauty_call/utils/app_theme.dart';
+
 import 'package:beauty_call/utils/vender_theme/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,42 +10,42 @@ class AppointmentRepo {
     List<AppointmentModel> appointmentList = [
       AppointmentModel(
           'assets/doctor/images/doctor1.jpg',
-          Strings.DOCTOR_NAME1,
+          'Shagufta',
           'Heart Surgeon, National heart care &\nNew Era Hospital',
           'Today-10 June, 2020',
           '10:00 AM-11:00 AM',
           '5'),
       AppointmentModel(
           'assets/doctor/images/doctor2.jpg',
-          Strings.DOCTOR_NAME2,
+          'Afsheen',
           'Heart Surgeon, National heart care &\nNew Era Hospital',
           'Tomorrow-11 June, 2020',
           '08:00 AM-09:00 AM',
           '8'),
       AppointmentModel(
           'assets/doctor/images/doctor3.jpg',
-          Strings.DOCTOR_NAME3,
+          'Zaalima',
           'Heart Surgeon, National heart care &\nNew Era Hospital',
           'Tomorrow-11 June, 2020',
           '08:00 AM-09:00 AM',
           '13'),
       AppointmentModel(
           'assets/doctor/images/doctor1.jpg',
-          Strings.DOCTOR_NAME1,
+          'Chagani',
           'Heart Surgeon, National heart care &\nNew Era Hospital',
           'Today-10 June, 2020',
           '10:00 AM-11:00 AM',
           '5'),
       AppointmentModel(
           'assets/doctor/images/doctor2.jpg',
-          Strings.DOCTOR_NAME2,
+          'Zareena',
           'Heart Surgeon, National heart care &\nNew Era Hospital',
           'Tomorrow-11 June, 2020',
           '08:00 AM-09:00 AM',
           '8'),
       AppointmentModel(
           'assets/doctor/images/doctor3.jpg',
-          Strings.DOCTOR_NAME3,
+          'Youtube',
           'Heart Surgeon, National heart care &\nNew Era Hospital',
           'Tomorrow-11 June, 2020',
           '08:00 AM-09:00 AM',
@@ -71,7 +70,7 @@ class _MyAppointmentsState extends State<MyAppointments> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorResources.COLOR_HOME_BACKGROUND,
+      backgroundColor: AppTheme.COLOR_HOME_BACKGROUND,
       body: SafeArea(
         child: Column(
           children: [
@@ -83,8 +82,9 @@ class _MyAppointmentsState extends State<MyAppointments> {
                   alignment: Alignment.center,
                   child: Text('My Appointments',
                       style: khulaBold.copyWith(
-                          color: ColorResources.COLOR_GREY,
-                          fontSize: Dimensions.FONT_SIZE_LARGE)),
+                        color: AppTheme.COLOR_GREY,
+                        fontSize: 16.0,
+                      )),
                 ),
               ]),
             ),
@@ -115,7 +115,7 @@ class _MyAppointmentsState extends State<MyAppointments> {
             Expanded(
                 child: ListView.builder(
               physics: BouncingScrollPhysics(),
-              padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+              padding: const EdgeInsets.all(10.0),
               itemCount: _appointmentRepo.getAppointmentList().length,
               itemBuilder: (context, index) {
                 return InkWell(
@@ -157,16 +157,13 @@ class UpperButton extends StatelessWidget {
             ),
           ],
           borderRadius: BorderRadius.circular(7),
-          color: isPressed
-              ? ColorResources.COLOR_PRIMARY
-              : ColorResources.COLOR_WHITE,
+          color: isPressed ? AppTheme.COLOR_PRIMARY : AppTheme.COLOR_WHITE,
         ),
         child: Center(
             child: Text(title,
                 style: isPressed
-                    ? khulaSemiBold.copyWith(color: ColorResources.COLOR_WHITE)
-                    : khulaSemiBold.copyWith(
-                        color: ColorResources.COLOR_PRIMARY))),
+                    ? khulaSemiBold.copyWith(color: AppTheme.COLOR_WHITE)
+                    : khulaSemiBold.copyWith(color: AppTheme.COLOR_PRIMARY))),
       ),
     ));
   }
@@ -181,12 +178,12 @@ class AppointmentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: ColorResources.COLOR_WHITE,
-          borderRadius: BorderRadius.circular(10)),
+          color: AppTheme.COLOR_WHITE, borderRadius: BorderRadius.circular(10)),
       margin: EdgeInsets.only(bottom: 20),
       padding: EdgeInsets.symmetric(
-          vertical: Dimensions.PADDING_SIZE_DEFAULT,
-          horizontal: Dimensions.PADDING_SIZE_DEFAULT),
+        vertical: 15.0,
+        horizontal: 15.0,
+      ),
       child: Column(children: [
         Row(
           children: [
@@ -199,83 +196,79 @@ class AppointmentWidget extends StatelessWidget {
                 Text(
                   appointmentModel.name,
                   style: khulaSemiBold.copyWith(
-                      color: ColorResources.COLOR_PRIMARY, fontSize: 20.0),
+                      color: AppTheme.COLOR_PRIMARY, fontSize: 20.0),
                 ),
                 Text(
                   appointmentModel.doctorDesignation,
                   style: khulaRegular.copyWith(
-                      color: ColorResources.COLOR_GREY,
-                      height: 1,
-                      fontSize: Dimensions.FONT_SIZE_EXTRA_SMALL),
+                    color: AppTheme.COLOR_GREY,
+                    height: 1,
+                    fontSize: 10.0,
+                  ),
                 ),
               ],
             ),
           ],
         ),
-        SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
+        const SizedBox(height: 20.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.access_time,
-                    color: ColorResources.COLOR_GREY2, size: 17),
-                SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT),
+                Icon(Icons.access_time, color: AppTheme.COLOR_GREY2, size: 17),
+                const SizedBox(width: 15.0),
                 Text(
-                  Strings.VISIT_TIME,
+                  'Visit time',
                   style: khulaSemiBold.copyWith(
-                      color: ColorResources.COLOR_GREY2, fontSize: 13),
+                      color: AppTheme.COLOR_GREY2, fontSize: 13),
                 )
               ],
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.attach_money,
-                    color: ColorResources.COLOR_GREY2, size: 17),
-                SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
+                Icon(Icons.attach_money, color: AppTheme.COLOR_GREY2, size: 17),
+                const SizedBox(width: 10.0),
                 Text(
-                  Strings.FEES_INFORMATION,
+                  'Fees information',
                   style: khulaSemiBold.copyWith(
-                      color: ColorResources.COLOR_GREY2, fontSize: 13),
+                      color: AppTheme.COLOR_GREY2, fontSize: 13),
                 )
               ],
             ),
           ],
         ),
-        SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+        const SizedBox(height: 10.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               appointmentModel.date,
               style: khulaRegular.copyWith(
-                  color: ColorResources.COLOR_GREY,
-                  fontSize: Dimensions.FONT_SIZE_SMALL),
+                  color: AppTheme.COLOR_GREY, fontSize: 12.0),
             ),
             Text(
               '\$ ${appointmentModel.price}',
               style: khulaSemiBold.copyWith(
-                  color: ColorResources.COLOR_GREY,
-                  fontSize: Dimensions.FONT_SIZE_SMALL),
+                  color: AppTheme.COLOR_GREY, fontSize: 12.0),
             ),
           ],
         ),
-        SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+        SizedBox(height: 5.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               appointmentModel.time,
               style: khulaBold.copyWith(
-                  color: ColorResources.COLOR_PRIMARY, fontSize: 13),
+                  color: AppTheme.COLOR_PRIMARY, fontSize: 13),
             ),
             Text(
-              Strings.FEE,
+              'Fee',
               style: khulaSemiBold.copyWith(
-                  color: ColorResources.COLOR_PRIMARY,
-                  fontSize: Dimensions.FONT_SIZE_SMALL),
+                  color: AppTheme.COLOR_PRIMARY, fontSize: 12.0),
             ),
           ],
         ),
