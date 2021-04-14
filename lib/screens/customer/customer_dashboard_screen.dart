@@ -1,3 +1,7 @@
+import 'package:beauty_call/models/service.dart';
+import 'package:beauty_call/utils/app_theme.dart';
+import 'package:beauty_call/widgets/custom_expansion_tile.dart';
+import 'package:configurable_expansion_tile/configurable_expansion_tile.dart';
 import 'package:flutter/material.dart';
 
 class CustomerDashboardScreen extends StatefulWidget {
@@ -9,104 +13,64 @@ class CustomerDashboardScreen extends StatefulWidget {
 }
 
 class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
+  List<Service> _services = Service.serviceData;
+
+  // Map<String, bool> expansionState = Map();
+
+  // @override
+  // void initState() {
+  //   _services.forEach((service) {
+  //     expansionState.putIfAbsent(service.title, () => true);
+  //   });
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        // title: Text(_pages[_selectedPageIndex]['title']),
-        title: Text(
-          'Dashboard',
-          style: TextStyle(
-            color: Colors.black87,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        // leading: IconButton(icon: Icon(Icons.home), onPressed: null),
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black87),
-        elevation: 0,
-      ),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
               backgroundColor: Colors.white,
+              title: Text(
+                'Beauty Call',
+                style: TextStyle(color: Colors.black),
+              ),
+              centerTitle: true,
               automaticallyImplyLeading: false,
-              // flexibleSpace: Padding(
-              //   padding: EdgeInsets.symmetric(horizontal: 8),
-              //   child: SizedBox(
-              //     height: MediaQuery.of(context).size.width * 0.6,
-              //     child: Carousel(
-              //             images: sliderImages.map((img) {
-              //               return ClipRRect(
-              //                 borderRadius: BorderRadius.circular(8),
-              //                 child: CachedNetworkImage(
-              //                   imageUrl: '$IMG_BASE_URL/${img.image}',
-              //                   fit: BoxFit.cover,
-              //                 ),
-              //               );
-              //             }).toList(),
-              //             dotSize: 4.0,
-              //             animationCurve: Curves.ease,
-              //             dotSpacing: 15.0,
-              //             dotColor: Theme.of(context).accentColor,
-              //             indicatorBgPadding: 5.0,
-              //             dotBgColor: Theme.of(context).primaryColor,
-              //             borderRadius: true,
-              //           ),
-              //   ),
-              // ),
-              // expandedHeight: 275,
             ),
             SliverList(
               delegate: SliverChildListDelegate(
                 [
                   Padding(
-                    padding: EdgeInsets.only(top: 2, left: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Our Deals',
-                          style: Theme.of(context).textTheme.headline,
-                        ),
-                        Center(
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.9,
-                            // height: 52.0,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(50),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.4),
-                                  spreadRadius: 5,
-                                  blurRadius: 7,
-                                  offset: Offset(0, 3),
-                                ),
-                              ],
-                            ),
-                            margin: const EdgeInsets.only(top: 90.0),
-                            child: TextField(
-                              textCapitalization: TextCapitalization.none,
-                              decoration: InputDecoration(
-                                border: new OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
-                                    const Radius.circular(60.0),
-                                  ),
-                                ),
-                                hintText: 'Search Service',
-                                prefixIcon: const Icon(
-                                  Icons.search,
-                                  color: Colors.green,
+                        const SizedBox(height: 14.0),
+                        Container(
+                          child: TextField(
+                            textCapitalization: TextCapitalization.none,
+                            decoration: InputDecoration(
+                              border: new OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                  const Radius.circular(6.0),
                                 ),
                               ),
-                              onChanged: (value) {},
+                              hintText: 'Search Service',
+                              prefixIcon: const Icon(
+                                Icons.search,
+                                color: Colors.green,
+                              ),
                             ),
+                            onChanged: (value) {},
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 14.0),
+                        Divider(thickness: 2.0),
+                        _buildTripItem(),
                       ],
                     ),
                   ),
@@ -118,4 +82,162 @@ class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
       ),
     );
   }
+
+  Widget _buildTripItem() {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.8,
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: _services.length,
+              itemBuilder: (context, i) {
+                return Container(
+                  margin: const EdgeInsets.symmetric(vertical: 9.0),
+                  child: Card(
+                    elevation: 3.0,
+                    color: _services[i].color,
+                    child: Theme(
+                      data: Theme.of(context)
+                          .copyWith(dividerColor: AppTheme.COLOR_WHITE),
+                      child: ExpansionTile(
+                        trailing: Column(
+                          children: [
+                            Image.asset(
+                              '${_services[i].imageURL}',
+                              width: 25.0,
+                              fit: BoxFit.cover,
+                            ),
+                            Text(
+                              '${_services[i].title}',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w600,
+                                color: AppTheme.COLOR_WHITE,
+                              ),
+                            ),
+                          ],
+                        ),
+                        leading: Image.asset('${_services[i].imageURL}'),
+                        title: Container(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                          child: Text(''),
+                        ),
+                        children: <Widget>[
+                          ListTile(
+                            tileColor: AppTheme.COLOR_WHITE,
+                            onTap: () {},
+                            title: Text(
+                              'Men\'s Haircut',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                // color: AppTheme.COLOR_WHITE,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            tileColor: AppTheme.COLOR_WHITE,
+                            onTap: () {},
+                            title: Text(
+                              'Ladies\'s Haircut',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                // color: AppTheme.COLOR_WHITE,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          const SizedBox(height: 60.0)
+        ],
+      ),
+    );
+  }
+
+  // Widget _buildTripItem() {
+  //   return Container(
+  //     height: MediaQuery.of(context).size.height * 0.8,
+  //     child: Column(
+  //       children: [
+  //         Expanded(
+  //           child: ListView.builder(
+  //             key: Key('builder ${selected.toString()}'),
+  //             itemCount: _services.length,
+  //             itemBuilder: (context, i) {
+  //               return Container(
+  //                 margin: const EdgeInsets.symmetric(vertical: 9.0),
+  //                 child: Card(
+  //                   elevation: 3.0,
+  //                   color: _services[i].color,
+  //                   child: Theme(
+  //                     data: Theme.of(context)
+  //                         .copyWith(dividerColor: AppTheme.COLOR_WHITE),
+  //                     child: ExpansionTile(
+  //                       key: Key(i.toString()),
+  //                       initiallyExpanded: i == selected,
+  //                       trailing: Text(
+  //                         '${_services[i].title}',
+  //                         style: TextStyle(
+  //                           fontSize: 20.0,
+  //                           fontWeight: FontWeight.w600,
+  //                           color: AppTheme.COLOR_WHITE,
+  //                         ),
+  //                       ),
+  //                       leading: Image.asset('${_services[i].imageURL}'),
+  //                       title: Container(
+  //                         height: MediaQuery.of(context).size.height * 0.3,
+  //                         child: Text(''),
+  //                       ),
+  //                       children: <Widget>[
+  //                         ListTile(
+  //                           tileColor: AppTheme.COLOR_WHITE,
+  //                           onTap: () {},
+  //                           title: Text(
+  //                             'Men\'s Haircut',
+  //                             style: TextStyle(
+  //                               fontWeight: FontWeight.w700,
+  //                               // color: AppTheme.COLOR_WHITE,
+  //                             ),
+  //                           ),
+  //                         ),
+  //                         ListTile(
+  //                           tileColor: AppTheme.COLOR_WHITE,
+  //                           onTap: () {},
+  //                           title: Text(
+  //                             'Ladies\'s Haircut',
+  //                             style: TextStyle(
+  //                               fontWeight: FontWeight.w700,
+  //                               // color: AppTheme.COLOR_WHITE,
+  //                             ),
+  //                           ),
+  //                         ),
+  //                       ],
+  //                       onExpansionChanged: ((newState) {
+  //                         if (newState)
+  //                           setState(() {
+  //                             selected = i;
+  //                           });
+  //                         else
+  //                           setState(() {
+  //                             selected = -1;
+  //                           });
+  //                       }),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               );
+  //             },
+  //           ),
+  //         ),
+  //         const SizedBox(height: 60.0)
+  //       ],
+  //     ),
+  //   );
+  // }
 }

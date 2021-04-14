@@ -1,4 +1,5 @@
 import 'package:beauty_call/screens/customer/customer_dashboard_screen.dart';
+import 'package:beauty_call/screens/customer/shop_screen.dart';
 import 'package:beauty_call/screens/main_screens/auth/login_screen.dart';
 import 'package:beauty_call/screens/main_screens/auth/signup_screen.dart';
 import 'package:beauty_call/screens/main_screens/auth_screen.dart';
@@ -12,4 +13,5 @@ final customRoutes = {
   MyAppointments.routeName: (context) => MyAppointments(),
   AuthScreen.routeName: (context) => AuthScreen(),
   CustomerDashboardScreen.routeName: (context) => CustomerDashboardScreen(),
+  ShopScreen.routeName: (context) => ShopScreen(),
 };

@@ -25,28 +25,40 @@ class AppTheme {
   static const Color COLOR_MAYA_BLUE = Color(0xff3ECDFF);
   static const Color COLOR_COLUMBIA_BLUE = Color(0xffB1D8FA);
   static const Color COLOR_SKY_MAYA_BLUE = Color(0xffD6ECFF);
+  // MY COLORS
+  static const Color COLOR_YELLOW = Color(0xfffdb400);
+  static const Color COLOR_SEA_GREEN = Color(0xff01a8b1);
+  static const Color COLOR_DARK_ORANGE = Color(0xfffc5c38);
 
   static const String fontName = 'Poppins';
 
   static const TextTheme textTheme = TextTheme(
-    headline1: poppinsRegular,
+    headline1: poppinsSemiBold,
+    headline2: title,
+  );
+
+  static const TextStyle title = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.w600,
+    fontSize: 18.0,
+    color: Colors.black87,
   );
 
   static const poppinsRegular = TextStyle(
     color: COLOR_BLACK,
     fontFamily: 'Poppins',
-    fontSize: 14,
+    fontSize: 16,
   );
   static const poppinsBold = TextStyle(
     color: COLOR_BLACK,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 16,
   );
   static const poppinsSemiBold = TextStyle(
     color: COLOR_BLACK,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600,
-    fontSize: 14,
+    fontSize: 16,
   );
 }
