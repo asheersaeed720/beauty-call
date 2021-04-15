@@ -1,3 +1,4 @@
+import 'package:beauty_call/screens/customer/shop_detail_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:beauty_call/models/shop.dart';
@@ -16,7 +17,7 @@ class _ShopScreenState extends State<ShopScreen> {
   List<Shop> _shops = Shop.shopData;
   ScrollController _scrollController;
 
-  String message = "reach the top";
+  String message = "scrolled up";
 
   _scrollListener() {
     // if (_scrollController.offset >= _scrollController.position.maxScrollExtent &&
@@ -95,7 +96,9 @@ class _ShopScreenState extends State<ShopScreen> {
               borderRadius: BorderRadius.circular(4.0),
             ),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushNamed(ShopDetailScreen.routeName);
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,

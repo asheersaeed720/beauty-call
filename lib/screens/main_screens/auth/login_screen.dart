@@ -1,3 +1,4 @@
+import 'package:beauty_call/screens/customer/customer_dashboard_screen.dart';
 import 'package:beauty_call/screens/vender/vender_dashboard_screen.dart';
 import 'package:beauty_call/utils/app_theme.dart';
 
@@ -12,6 +13,11 @@ import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
   static const String routeName = '/login';
+
+  final String fromWhichScreen;
+
+  LoginScreen({this.fromWhichScreen});
+
   @override
   Widget build(BuildContext context) {
     TextEditingController _emailController = TextEditingController();
@@ -100,8 +106,14 @@ class LoginScreen extends StatelessWidget {
                   btnTxt: 'Sign In',
                   onTap: () {
                     // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => StartupScreen()));
-                    Navigator.of(context)
-                        .pushNamed(VenderDashboardScreen.routeName);
+
+                    if (fromWhichScreen == 'vender') {
+                      Navigator.of(context)
+                          .pushNamed(VenderDashboardScreen.routeName);
+                    } else {
+                      Navigator.of(context)
+                          .pushNamed(CustomerDashboardScreen.routeName);
+                    }
                   },
                 ),
               ),

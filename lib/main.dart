@@ -1,6 +1,7 @@
 import 'package:beauty_call/screens/customer/customer_dashboard_screen.dart';
 import 'package:beauty_call/screens/customer/shop_detail_screen.dart';
 import 'package:beauty_call/screens/customer/shop_screen.dart';
+import 'package:beauty_call/screens/main_screens/main_screen.dart';
 import 'package:beauty_call/utils/app_theme.dart';
 import 'package:beauty_call/utils/custom_routes.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         textTheme: AppTheme.textTheme,
       ),
-      home: ShopDetailScreen(),
+      home: MainScreen(),
       routes: customRoutes,
     );
   }

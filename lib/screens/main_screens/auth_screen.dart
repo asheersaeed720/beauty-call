@@ -9,6 +9,10 @@ import 'package:flutter/material.dart';
 class AuthScreen extends StatelessWidget {
   static const String routeName = '/auth';
 
+  final String fromWhichScreen;
+
+  AuthScreen({this.fromWhichScreen});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,11 +47,10 @@ class AuthScreen extends StatelessWidget {
                 child: CustomButton(
                   btnTxt: 'Create an Account',
                   onTap: () {
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (_) => DoctorSignUpScreen()));
-                    Navigator.of(context).pushNamed(SignUpScreen.routeName);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpScreen()),
+                    );
                   },
                 ),
               ),
@@ -57,11 +60,12 @@ class AuthScreen extends StatelessWidget {
                   btnTxt: 'Login',
                   isWhiteBackground: true,
                   onTap: () {
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (_) => DoctorSignInScreen()));
-                    Navigator.of(context).pushNamed(LoginScreen.routeName);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              LoginScreen(fromWhichScreen: fromWhichScreen)),
+                    );
                   },
                 ),
               ),

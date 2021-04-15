@@ -1,4 +1,5 @@
 import 'package:beauty_call/models/service.dart';
+import 'package:beauty_call/screens/customer/shop_screen.dart';
 import 'package:beauty_call/utils/app_theme.dart';
 import 'package:beauty_call/widgets/custom_expansion_tile.dart';
 import 'package:configurable_expansion_tile/configurable_expansion_tile.dart';
@@ -126,7 +127,10 @@ class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
                         children: <Widget>[
                           ListTile(
                             tileColor: AppTheme.COLOR_WHITE,
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(ShopScreen.routeName);
+                            },
                             title: Text(
                               'Men\'s Haircut',
                               style: TextStyle(

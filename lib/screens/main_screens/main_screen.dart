@@ -28,7 +28,12 @@ class MainScreen extends StatelessWidget {
                   btnTxt: 'Login as Vender',
                   isWhiteBackground: true,
                   onTap: () {
-                    Navigator.of(context).pushNamed(AuthScreen.routeName);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              AuthScreen(fromWhichScreen: 'vender')),
+                    );
                   },
                 ),
               ),
@@ -38,9 +43,12 @@ class MainScreen extends StatelessWidget {
                   btnTxt: 'Login as Customer',
                   isWhiteBackground: true,
                   onTap: () {
-                    Navigator.of(context).pushNamed(AuthScreen.routeName);
-                    // Navigator.of(context)
-                    //     .pushNamed(CustomerDashboardScreen.routeName);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              AuthScreen(fromWhichScreen: 'customer')),
+                    );
                   },
                 ),
               ),
