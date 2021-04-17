@@ -30,6 +30,7 @@ class AppTheme {
   static const Color COLOR_SEA_GREEN = Color(0xff01a8b1);
   static const Color COLOR_DARK_ORANGE = Color(0xfffc5c38);
   static const Color COLOR_TEXT_FIELD = Color(0xfff8f8f8);
+  static const Color COLOR_TEXT_ICON = Color(0xff051644);
 
   static const String fontName = 'Poppins';
 

@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
       ),
       home: MainScreen(),
+      // home: ShopDetailScreen(),
       routes: customRoutes,
     );
   }

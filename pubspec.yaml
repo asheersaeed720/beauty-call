@@ -27,6 +27,8 @@ dependencies:
   http: ^0.12.2
   flushbar: ^1.10.4
   fluttertoast: ^7.1.6
+  # carousel_slider: ^2.3.1
+  carousel_pro: ^1.0.0
   flutter_riverpod: ^0.12.4
   flutter_rating_bar: ^3.1.0
   country_code_picker: ^1.6.0
